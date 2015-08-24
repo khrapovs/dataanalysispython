@@ -19,18 +19,28 @@ Online code editors which allow to bypass any difficulties connected with instal
 
 For local installation it is recommended to download `Anaconda distribution <https://store.continuum.io/cshop/anaconda>`_. Anaconda includes my favorite IDE, `Spyder <https://pythonhosted.org/spyder/>`_.
 
-Resources for these notes
--------------------------
-
-- Python Scientific Lecture Notes: `scipy-lectures.github.io <https://scipy-lectures.github.io/>`_
-- Dive into Python 3: `diveintopython3.net <http://www.diveintopython3.net/>`_
-
 Essential libraries
 -------------------
 
-- Pandas - data analysis library: `pandas.pydata.org <http://pandas.pydata.org/>`_
-- Numpy - fundamental package for scientific computing: `numpy.org <http://www.numpy.org/>`_
-- SciPy - numerical routines: `scipy.org <https://www.scipy.org/scipylib/index.html>`_
-- Matplotlib - plotting library: `matplotlib.org <http://matplotlib.org/>`_
-- Bokeh - Interactive plotting: `bokeh.pydata.org <http://bokeh.pydata.org/>`_
-- Plotly - Interactive plotting: `plot.ly <https://plot.ly/>`_
+- `Pandas <http://pandas.pydata.org/>`_ - data analysis library
+- `Numpy <http://www.numpy.org/>`_ - fundamental package for scientific computing
+- `SciPy <https://www.scipy.org/scipylib/index.html>`_ - numerical routines
+- `StatsModels <http://www.statsmodels.org/stable/index.html>`_ - econometrics tools
+- `Matplotlib <http://matplotlib.org/>`_ - plotting library
+- `Bokeh <http://bokeh.pydata.org/>`_ - Interactive plotting
+- `Plotly <https://plot.ly/>`_ - Interactive plotting
+
+Data sources
+------------
+
+- `Quandl <https://www.quandl.com/>`_
+- `Google Finance <https://www.google.com/finance>`_
+- `Yahoo Finance <https://finance.yahoo.com/>`_
+- `FRED <https://research.stlouisfed.org/fred2/>`_
+
+Resources for these notes
+-------------------------
+
+- `Python Scientific Lecture Notes <https://scipy-lectures.github.io/>`_
+- `Dive into Python 3 <http://www.diveintopython3.net/>`_
+- `Python for Econometrics <http://www.kevinsheppard.com/Python_for_Econometrics>`_

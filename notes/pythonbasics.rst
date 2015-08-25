@@ -227,6 +227,23 @@ Note that Python can not convert numbers into strings automatically. Unless you 
 Lists
 ~~~~~
 
+.. todo:: Write **Lists** section
+
+Tuples
+~~~~~~
+
+.. todo:: Write **Tuples** section
+
+Dictionaries
+~~~~~~~~~~~~
+
+.. todo:: Write **Dictionaries** section
+
+Sets
+~~~~
+
+.. todo:: Write **Sets** section
+
 
 Indexing
 --------
@@ -285,6 +302,48 @@ One way to remember how slices work is to think of the indices as pointing betwe
 	 +---+---+---+---+---+---+
 	 0   1   2   3   4   5   6
 	-6  -5  -4  -3  -2  -1
+
+
+Control flow
+------------
+
+.. todo:: Write **Control flow** section
+
+if/elif/else
+
+for/range
+
+while/break/continue
+
+list comprehensions
+
+Functions
+---------
+
+.. todo:: Write **Functions** section
+
+def, return, default values, keyword variables
+
+Classes
+-------
+
+.. todo:: Write **Classes** section
+
+def, methods, attributes, inheritance
+
+Modules and Packages
+--------------------
+
+.. todo:: Write **Modules and Packages** section
+
+import, ``__all__``, ``__main__``
+
+Documenenting your code
+-----------------------
+
+.. todo:: Write **Documenenting your code** section
+
+docstrings, numpydoc
 
 
 .. _`Wakari.io`: https://www.wakari.io

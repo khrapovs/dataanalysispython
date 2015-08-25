@@ -12,10 +12,10 @@ Why Python?
 
 How to start using Python
 -------------------------
-Online code editors which allow to bypass any difficulties connected with installation of Python on your own machine:
+
+Online code editor which allows to bypass any difficulties connected with installation of Python on your own machine:
 
 - `Wakari.io <https://www.wakari.io>`_
-- `CodeAnywhere.com <https://codeanywhere.com/>`_
 
 For local installation it is recommended to download `Anaconda distribution <https://store.continuum.io/cshop/anaconda>`_. Anaconda includes my favorite IDE, `Spyder <https://pythonhosted.org/spyder/>`_.
 

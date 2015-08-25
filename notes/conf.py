@@ -47,6 +47,9 @@ extensions = [
     'sphinx.ext.viewcode',
 ]
 
+# If this is True, todo and todolist produce output, else they produce nothing. The default is False.
+todo_include_todos = True
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 

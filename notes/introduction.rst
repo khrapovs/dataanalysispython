@@ -41,6 +41,7 @@ Data sources
 Resources for these notes
 -------------------------
 
+- `Python documentation <https://docs.python.org/3/>`_
 - `Python Scientific Lecture Notes <https://scipy-lectures.github.io/>`_
 - `Dive into Python 3 <http://www.diveintopython3.net/>`_
 - `Python for Econometrics <http://www.kevinsheppard.com/Python_for_Econometrics>`_

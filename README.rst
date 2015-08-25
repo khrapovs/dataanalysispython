@@ -1,6 +1,6 @@
 .. image:: https://readthedocs.org/projects/dataanalysispython/badge/?version=latest
-:target: https://readthedocs.org/projects/dataanalysispython/?badge=latest
-:alt: Documentation Status
+	:target: https://readthedocs.org/projects/dataanalysispython/?badge=latest
+	:alt: Documentation Status
 
 =======================
 Data Analysis in Python

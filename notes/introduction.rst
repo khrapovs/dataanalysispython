@@ -44,3 +44,4 @@ Resources for these notes
 - `Python Scientific Lecture Notes <https://scipy-lectures.github.io/>`_
 - `Dive into Python 3 <http://www.diveintopython3.net/>`_
 - `Python for Econometrics <http://www.kevinsheppard.com/Python_for_Econometrics>`_
+- `High Performance Scientific Computing <https://faculty.washington.edu/rjl/classes/am583s2014/notes/index.html>`_

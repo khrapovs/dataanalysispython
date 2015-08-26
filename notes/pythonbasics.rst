@@ -227,7 +227,99 @@ Note that Python can not convert numbers into strings automatically. Unless you 
 Lists
 ~~~~~
 
-.. todo:: Write **Lists** section
+Lists are very convenient and simplest data containers. Here is how we store a collection of numbers in a variable::
+
+	>>> a = [1, 3, 5]
+	>>> a
+	[1, 3, 5]
+	>>> type(a)
+	<class 'list'>
+
+Lists are not restricted to be uniform in types of their elements::
+
+	>>> b = [5, 2.3, 'abc', [4, 'b'], a, print]
+	>>> b
+	[5, 2.3, 'abc', [4, 'b'], [1, 3, 5], <built-in function print>]
+
+Lists can be modified::
+
+	>>> a[1] = 4
+	>>> a
+	[1, 4, 5]
+
+Lists can be merged or repeated::
+
+	>>> a + a
+	[1, 4, 5, 1, 4, 5]
+	>>> 3 * a
+	[1, 4, 5, 1, 4, 5, 1, 4, 5]
+
+You can add one item to the end of the list inplace::
+
+	>>> a.append(7)
+	>>> a
+	[1, 4, 5, 7]
+
+or add a few items::
+
+	>>> a.extend([0, 2])
+	>>> a
+	[1, 4, 5, 7, 0, 2]
+
+Note the difference::
+
+	>>> a = [1, 3, 5]
+	>>> b = [1, 3, 5]
+	>>> a.append([2, 4, 6])
+	>>> b.extend([2, 4, 6])
+	>>> a
+	[1, 3, 5, [2, 4, 6]]
+	>>> b
+	[1, 3, 5, 2, 4, 6]
+
+If the end of the list is not what you want, insert teh element after a specified position::
+
+	>>> a.insert(1, .5)
+	>>> a
+	[1, 0.5, 4, 5, 7, 0, 2]
+
+There are at least two methods to remove elements from a list::
+
+	>>> x = ['a', 'b', 'c', 'b']
+	>>> x.remove('b')
+	>>> x
+	['a', 'c', 'b']
+	>>> x.remove('b')
+	>>> x
+	['a', 'c']
+	>>> x.remove('b')
+	Traceback (most recent call last):
+	  File "<stdin>", line 1, in <module>
+	ValueError: list.remove(x): x not in list
+
+or::
+
+	>>> y = ['a', 'b', 'c', 'b']
+	>>> y.pop()
+	'b'
+	>>> y
+	['a', 'b', 'c']
+	>>> y.pop(1)
+	'b'
+	>>> y
+	['a', 'c']
+
+Here is how you sort a list without altering the original object, and inplace::
+
+	>>> x = ['a', 'b', 'c', 'b', 'a']
+	>>> sorted(x)
+	['a', 'a', 'b', 'b', 'c']
+	>>> x
+	['a', 'b', 'c', 'b', 'a']
+	>>> x.sort()
+	>>> x
+	['a', 'a', 'b', 'b', 'c']
+
 
 Tuples
 ~~~~~~

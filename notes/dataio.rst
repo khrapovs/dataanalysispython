@@ -34,6 +34,8 @@ World Bank
 
 Google Analytics
 
+Quandl
+
 From html
 ~~~~~~~~~
 

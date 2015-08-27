@@ -324,7 +324,29 @@ Here is how you sort a list without altering the original object, and inplace::
 Tuples
 ~~~~~~
 
-.. todo:: Write **Tuples** section
+On the first glance tuples are very similar to lists. The difference in definition is the usage of parentheses ``()`` (or even without them) instead of square brackets ``[]``::
+
+	>>> t = 12345, 54321, 'hello!'
+	>>> t
+	(12345, 54321, 'hello!')
+	>>> type(t)
+	<class 'tuple'>
+	>>> t = (12345, 54321, 'hello!')
+	>>> t
+	(12345, 54321, 'hello!')
+
+The main difference is that tuples are *immutable* (impossible to modify)::
+
+	>>> t[0] = 10
+	Traceback (most recent call last):
+	  File "<stdin>", line 1, in <module>
+	TypeError: 'tuple' object does not support item assignment
+
+Here are the reasons you want to use tuples:
+
+	- Tuples are faster than lists. If you're defining a constant set of values and all you're ever going to do with it is iterate through it, use a tuple instead of a list.
+	- It makes your code safer if you "write-protect" data that doesn't need to be changed.
+	- Some tuples can be used as dictionary keys (specifically, tuples that contain immutable values like strings, numbers, and other tuples). Lists can never be used as dictionary keys, because lists are not immutable.
 
 Dictionaries
 ~~~~~~~~~~~~
@@ -394,6 +416,14 @@ One way to remember how slices work is to think of the indices as pointing betwe
 	 +---+---+---+---+---+---+
 	 0   1   2   3   4   5   6
 	-6  -5  -4  -3  -2  -1
+
+Indexing with lists works in the same way. But on top of that, if your list contains other lists, or strings (or other **iterables**), then indexing becomes "layered"::
+
+	>>> x = [[1, 3, 5], ['c', 'a', 'b']]
+	>>> x[0][1]
+	3
+	>>> x[1][-2:]
+	['a', 'b']
 
 
 Control flow

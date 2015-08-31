@@ -351,7 +351,30 @@ Here are the reasons you want to use tuples:
 Dictionaries
 ~~~~~~~~~~~~
 
-.. todo:: Write **Dictionaries** section
+A dictionary is an unordered set of key-value pairs. There are some restrictions on what can be a key. In general, keys can not be mutable objects. Keys must be unique. Below are a few example of dictionary initialization::
+
+	>>> empty_dict = dict()
+	>>> empty_dict
+	{}
+	>>> empty_dict = {}
+	>>> empty_dict
+	{}
+	>>> grades = {'Ivan': 4, 'Olga': 5}
+	>>> grades
+	{'Ivan': 4, 'Olga': 5}
+	>>> grades['Petr'] = 'F'
+	>>> grades
+	{'Ivan': 4, 'Petr': 'F', 'Olga': 5}
+	>>> grades['Olga']
+	5
+
+Keys and values can be accessed separately if needed::
+
+	>>> grades.keys()
+	dict_keys(['Ivan', 'Olga'])
+	>>> grades.values()
+	dict_values([4, 5])
+
 
 Sets
 ~~~~

@@ -359,6 +359,8 @@ A dictionary is an unordered set of key-value pairs. There are some restrictions
 	>>> empty_dict = {}
 	>>> empty_dict
 	{}
+	>>> type(empty_dict)
+	<class 'dict'>
 	>>> grades = {'Ivan': 4, 'Olga': 5}
 	>>> grades
 	{'Ivan': 4, 'Olga': 5}
@@ -379,8 +381,28 @@ Keys and values can be accessed separately if needed::
 Sets
 ~~~~
 
-.. todo:: Write **Sets** section
+A set is an unordered collection of unique values. A single set can contain values of any immutable datatype. Once you have two sets, you can do standard set operations like union, intersection, and set difference. Here is a brief demonstration::
 
+	>>> basket = {'apple', 'orange', 'apple', 'pear', 'orange', 'banana'}
+	>>> basket
+	{'orange', 'banana', 'pear', 'apple'}
+	>>> type(basket)
+	<class 'set'>
+	>>> 'orange' in basket
+	True
+	>>> 'crabgrass' in basket
+	False
+
+Let's create a second set and see what we can do with both::
+
+	>>> basket - bag
+	{'apple', 'orange', 'pear'}
+	>>> basket | bag
+	{'peach', 'orange', 'pear', 'banana', 'apple'}
+	>>> basket & bag
+	{'banana'}
+	>>> basket ^ bag
+	{'peach', 'apple', 'orange', 'pear'}
 
 Indexing
 --------

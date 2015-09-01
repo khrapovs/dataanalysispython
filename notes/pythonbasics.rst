@@ -479,7 +479,7 @@ if/elif/else
 
 Writing conditional statements in Python is very easy. Start from ``if``, continue with ``elif``, and finish with ``else``. For example,
 
-.. sourcecode:: ipython
+.. ipython::
 
 	In [1]: if 2**2 == 4:
    	   ...:     print('Should be True')
@@ -488,7 +488,7 @@ Writing conditional statements in Python is very easy. Start from ``if``, contin
 
 Be careful to **respect the indentation depth**. The Ipython shell automatically increases the indentation depth after a column ``:`` sign; to decrease the indentation depth, go four spaces to the left with the Backspace key. Press the Enter key twice to leave the logical block.
 
-.. sourcecode:: ipython
+.. ipython::
 
     In [1]: a = 10
 
@@ -503,8 +503,158 @@ Be careful to **respect the indentation depth**. The Ipython shell automatically
        ...:
     A lot
 
+Besides chceking for equality as in the previous examples, you can check for other statements evaluating to ``bool``. These are comparison operators: ``<, >, <=, =>``. Testing for equality of two objects is done with ``is`` operator::
+
+	>>> a, b = 1, 1.
+	>>> a == b
+	True
+	>>> a is b
+	False
+
+You can test whether an object belongs to a collection using ``in`` operator. Note that if a collection is of type ``dict``, then the search is done over dictionaries.::
+
+	>>> a = [1, 2, 4]
+	>>> 2 in a, 4 in a
+	(True, True)
+	>>> b = {'a': 3, 'c': 8}
+	>>> 'c' in b
+	True
+
+
+
 Loops
 ~~~~~
+
+If you do need to iterate over a sequence of numbers, the built-in function ``range()`` comes in handy. It generates arithmetic progressions:
+
+.. ipython::
+
+	In [7]: for i in range(4):
+	   ...:     print(i)
+	   ...:     
+	0
+	1
+	2
+	3
+
+The ``for`` statement in Python differs a bit from what you may be used to in other programming languages. Rather than always iterating over an arithmetic progression of numbers (like in Pascal), or giving the user the ability to define both the iteration step and halting condition (as in C), Python's ``for`` statement iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence.
+
+.. ipython::
+
+	In [6]: words = ['cat', 'window', 'bird']
+	   ...: for w in words:
+	   ...:     print(w, len(w))
+	   ...:     
+	cat 3
+	window 6
+	bird 4
+
+Here is another example.
+
+.. ipython::
+
+	In [1]: for letter in 'Python':
+	   ...:     print(letter)
+	   ...:     
+	P
+	y
+	t
+	h
+	o
+	n
+
+Coming back to ``range()`` function. It can have at most three arguments, ``range(first, last, step)``. Given this knowledge we can generate various sequences. Note that this function returns neither a list not a tuple. In fact, it is an object itself. In order to check what are the indices if we use ``range`` in a ``for`` loop, we can convert it to list using ``list()`` function. The reason behind this behavior is to save memory: ``range`` does not store the whole list, only its definition. ::
+
+	>>> list(range(2, 10))
+	[2, 3, 4, 5, 6, 7, 8, 9]
+	>>> list(range(2, 10, 3))
+	[2, 5, 8]
+	>>> list(range(-2, -10, -3))
+	[-2, -5, -8]
+
+If you need to break out of the loop or skip an iteration, then you need to know two statements, ``break`` and ``continue``, respectively.
+
+.. ipython::
+
+	In [3]: a = [1, 0, 2, 4]
+	   ...: for element in a:
+	   ...:     if element == 0:
+	   ...:         continue
+	   ...:     print(1. / element)
+	   ...:     
+	1.0
+	0.5
+	0.25
+
+or
+
+.. ipython::
+
+	In [4]: a = [1, 0, 2, 4]
+	   ...: for element in a:
+	   ...:     if element == 0:
+	   ...:         break
+	   ...:     print(1. / element)
+	   ...:     
+	1.0
+
+Common use case is to iterate over items while keeping track of current index. Quick and dirty way to do this is:
+
+.. ipython::
+
+	In [5]: words = ('cool', 'powerful', 'readable')
+	   ...: for i in range(0, len(words)):
+	   ...:     print(i, words[i])
+	   ...:     
+	0 cool
+	1 powerful
+	2 readable
+
+Yet, Python provides a much more elegant approach:
+
+.. ipython::
+
+	In [7]: for index, item in enumerate(words):
+	   ...:     print(index, item)
+	   ...:     
+	0 cool
+	1 powerful
+	2 readable
+
+Try iterating over dictionaries yourslef. You should find out that Python iterates over keys only. In order to have access to the whole pair, one should use ``items()`` method:
+
+.. ipython::
+
+	In [10]: grades = {'Ivan': 4, 'Olga': 5, 'Petr': 4.5}
+	    ...: for key, val in grades.items():
+	    ...:     print('%s has grade: %s' % (key, val))
+	    ...:     
+	Ivan has grade: 4
+	Petr has grade: 4.5
+	Olga has grade: 5
+
+Here is how you might compute Pi:
+
+.. ipython::
+
+	In [18]: pi = 2
+	    ...: for i in range(1, 1000):
+	    ...:     pi *= 4*i**2 / (4*i**2 - 1)
+	    ...: print(pi)
+	    ...: 
+	3.1408069608284657
+
+Or if you want to stop after certain precision was achieved (a common use case), you might want to use ``while`` loop:
+
+.. ipython::
+
+	In [25]: pi, error = 2, 1e10
+	    ...: while error > 1e-3:
+	    ...:     pi *= 4*i**2 / (4*i**2 - 1)
+	    ...:     error = abs(pi - 3.141592653589793)
+	    ...: print(pi)
+	    ...: 
+	3.1405927760475945
 
 List comprehensions
 ~~~~~~~~~~~~~~~~~~~

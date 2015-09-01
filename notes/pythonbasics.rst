@@ -115,7 +115,6 @@ Division (``/``) always returns a ``float``. To do floor division and get an int
 
 	>>> 17 / 3  # classic division returns a float
 	5.666666666666667
-	>>>
 	>>> 17 // 3  # floor division discards the fractional part
 	5
 	>>> 17 % 3  # the % operator returns the remainder of the division
@@ -212,7 +211,7 @@ Strings can be constructed using math operators and by converting numbers into s
 	>>> 2 * 'a' + '_' + 3 * 'b' + '_' + 4 * (str(.5) + '_')
 	'aa_bbb_0.5_0.5_0.5_0.5_'
 
-Note that Python can not convert numbers into strings automatically. Unless you use ``print()`` function or convert explicitely.::
+Note that Python can not convert numbers into strings automatically. Unless you use ``print()`` function or convert explicitly.::
 
 	>>> 'a' + 1
 	Traceback (most recent call last):
@@ -277,7 +276,7 @@ Note the difference::
 	>>> b
 	[1, 3, 5, 2, 4, 6]
 
-If the end of the list is not what you want, insert teh element after a specified position::
+If the end of the list is not what you want, insert the element after a specified position::
 
 	>>> a.insert(1, .5)
 	>>> a
@@ -395,6 +394,7 @@ A set is an unordered collection of unique values. A single set can contain valu
 
 Let's create a second set and see what we can do with both::
 
+	>>> bag = {'banana', 'peach'}
 	>>> basket - bag
 	{'apple', 'orange', 'pear'}
 	>>> basket | bag
@@ -407,7 +407,7 @@ Let's create a second set and see what we can do with both::
 Indexing
 --------
 
-Python data containers (including strings and lists) can be `sliced` to access their specific parts. Counting in Python starts from zero. Keep this in mind when you want to access a specific charcter of a string::
+Python data containers (including strings and lists) can be `sliced` to access their specific parts. Counting in Python starts from zero. Keep this in mind when you want to access a specific character of a string::
 
 	>>> word = 'Python'
 	>>> word[0]  # character in position 0

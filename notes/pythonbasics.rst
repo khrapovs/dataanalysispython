@@ -474,15 +474,41 @@ Indexing with lists works in the same way. But on top of that, if your list cont
 Control flow
 ------------
 
-.. todo:: Write **Control flow** section
-
 if/elif/else
+~~~~~~~~~~~~
 
-for/range
+Writing conditional statements in Python is very easy. Start from ``if``, continue with ``elif``, and finish with ``else``. For example,
 
-while/break/continue
+.. sourcecode:: ipython
 
-list comprehensions
+	In [1]: if 2**2 == 4:
+   	   ...:     print('Should be True')
+   	   ...:     
+	Should be True
+
+Be careful to **respect the indentation depth**. The Ipython shell automatically increases the indentation depth after a column ``:`` sign; to decrease the indentation depth, go four spaces to the left with the Backspace key. Press the Enter key twice to leave the logical block.
+
+.. sourcecode:: ipython
+
+    In [1]: a = 10
+
+    In [2]: if a == 1:
+       ...:     print(1)
+       ...: elif a == 2:
+       ...:     print(2)
+       ...: elif a == 3:
+       ...:     print(3)
+       ...: else:
+       ...:     print('A lot')
+       ...:
+    A lot
+
+Loops
+~~~~~
+
+List comprehensions
+~~~~~~~~~~~~~~~~~~~
+
 
 Functions
 ---------

@@ -2,6 +2,19 @@
 Introduction
 ============
 
+Resources
+---------
+
+These notes are a compilation of the following original resources:
+
+- `Python 3 documentation <https://docs.python.org/3/>`_
+- `Python Scientific Lecture Notes <https://scipy-lectures.github.io/>`_
+- `Dive into Python 3 <http://www.diveintopython3.net/>`_
+- `Python for Econometrics <http://www.kevinsheppard.com/Python_for_Econometrics>`_
+- `High Performance Scientific Computing <https://faculty.washington.edu/rjl/classes/am583s2014/notes/index.html>`_
+- `DataJoy documentation <https://www.getdatajoy.com/learn/>`_
+- `Leran Python The Hard Way <http://learnpythonthehardway.org/book/>`_
+
 Why Python?
 -----------
 
@@ -38,14 +51,3 @@ Data sources
 - `Google Finance <https://www.google.com/finance>`_
 - `Yahoo Finance <https://finance.yahoo.com/>`_
 - `FRED <https://research.stlouisfed.org/fred2/>`_
-
-Resources for these notes
--------------------------
-
-- `Python 3 documentation <https://docs.python.org/3/>`_
-- `Python Scientific Lecture Notes <https://scipy-lectures.github.io/>`_
-- `Dive into Python 3 <http://www.diveintopython3.net/>`_
-- `Python for Econometrics <http://www.kevinsheppard.com/Python_for_Econometrics>`_
-- `High Performance Scientific Computing <https://faculty.washington.edu/rjl/classes/am583s2014/notes/index.html>`_
-- `DataJoy documentation <https://www.getdatajoy.com/learn/>`_
-- `Leran Python The Hard Way <http://learnpythonthehardway.org/book/>`_

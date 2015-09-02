@@ -5,7 +5,7 @@ Introduction
 Resources
 ---------
 
-These notes are a compilation of the following original resources:
+These notes are a compilation of the following original resources for the purposes of the class I teach:
 
 - `Python 3 documentation <https://docs.python.org/3/>`_
 - `Python Scientific Lecture Notes <https://scipy-lectures.github.io/>`_

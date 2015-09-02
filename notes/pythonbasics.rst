@@ -625,10 +625,10 @@ Try iterating over dictionaries yourslef. You should find out that Python iterat
 
 .. ipython::
 
-	In [10]: grades = {'Ivan': 4, 'Olga': 5, 'Petr': 4.5}
-	    ...: for key, val in grades.items():
-	    ...:     print('%s has grade: %s' % (key, val))
-	    ...:     
+	In [1]: grades = {'Ivan': 4, 'Olga': 5, 'Petr': 4.5}
+	   ...: for key, val in grades.items():
+	   ...:     print('%s has grade: %s' % (key, val))
+	   ...:     
 	Ivan has grade: 4
 	Petr has grade: 4.5
 	Olga has grade: 5
@@ -637,18 +637,18 @@ Here is how you might compute Pi:
 
 .. ipython::
 
-	In [18]: pi = 2
-	    ...: for i in range(1, 1000):
-	    ...:     pi *= 4*i**2 / (4*i**2 - 1)
-	    ...: print(pi)
-	    ...: 
+	In [1]: pi = 2
+	   ...: for i in range(1, 1000):
+	   ...:     pi *= 4*i**2 / (4*i**2 - 1)
+	   ...: print(pi)
+	   ...: 
 	3.1408069608284657
 
 Or if you want to stop after certain precision was achieved (a common use case), you might want to use ``while`` loop:
 
 .. ipython::
 
-	In [25]: pi, error = 2, 1e10
+	In [1]: pi, error = 2, 1e10
 	    ...: while error > 1e-3:
 	    ...:     pi *= 4*i**2 / (4*i**2 - 1)
 	    ...:     error = abs(pi - 3.141592653589793)
@@ -659,6 +659,104 @@ Or if you want to stop after certain precision was achieved (a common use case),
 List comprehensions
 ~~~~~~~~~~~~~~~~~~~
 
+List comprehensions provide a concise way to create lists. Common applications are to make new lists where each element is the result of some operations applied to each member of another sequence or iterable, or to create a subsequence of those elements that satisfy a certain condition.
+
+For example, assume we want to create a list of squares, like:
+
+.. ipython::
+
+	In [1]: squares = []
+	   ...: for x in range(10):
+	   ...:     squares.append(x**2)
+	   ...: print(squares)
+	   ...: 
+	[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+As always, Python has a more elegant solution with the same result::
+
+	>>> squares = [x**2 for x in range(10)]
+
+List comprehensions can include more ``for`` statements and even ``if`` statements::
+
+	>>> [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]
+	[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
+
+which creates a list of pairs with distinct elements. Equivalenly, one could write this over several lines:
+
+.. ipython::
+
+	In [1]: combs = []
+	   ...: for x in [1,2,3]:
+	   ...:     for y in [3,1,4]:
+	   ...:         if x != y:
+	   ...:             combs.append((x, y))
+	   ...: print(combs)
+
+Below are a few more examples::
+
+	>>> vec = [-4, -2, 0, 2, 4]
+	>>> # create a new list with the values doubled
+	>>> [x*2 for x in vec]
+	[-8, -4, 0, 4, 8]
+	>>> # filter the list to exclude negative numbers
+	>>> [x for x in vec if x >= 0]
+	[0, 2, 4]
+	>>> # apply a function to all the elements
+	>>> [abs(x) for x in vec]
+	[4, 2, 0, 2, 4]
+	>>> # call a method on each element
+	>>> freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']
+	>>> [weapon.strip() for weapon in freshfruit]
+	['banana', 'loganberry', 'passion fruit']
+	>>> # create a list of 2-tuples like (number, square)
+	>>> [(x, x**2) for x in range(6)]
+	[(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]
+	>>> # flatten a list using a listcomp with two 'for'
+	>>> vec = [[1,2,3], [4,5,6], [7,8,9]]
+	>>> [num for elem in vec for num in elem]
+	[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+Finally, we can transpose a "matrix" represented as a list of lists in the following several ways.
+
+.. ipython::
+
+	In [1]: matrix = [
+	   ...:     [1, 2, 3, 4],
+	   ...:     [5, 6, 7, 8],
+	   ...:     [9, 10, 11, 12],
+	   ...: ]
+
+First, the longest but clearest:
+
+.. ipython::
+
+	In [1]: transposed = []
+	   ...: for i in range(4):
+	   ...:     transposed_row = []
+	   ...:     for row in matrix:
+	   ...:         transposed_row.append(row[i])
+	   ...:     transposed.append(transposed_row)
+	   ...: print(transposed)
+	   ...: 
+	[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+
+Next uses one list comprehension:
+
+.. ipython::
+
+	In [1]: transposed = []
+	   ...: for i in range(4):
+	   ...:     transposed.append([row[i] for row in matrix])
+
+Or, one single nested list comprehension::
+
+	>>> [[row[i] for row in matrix] for i in range(4)]
+
+And, finally, the most elegant (in the context of standard library) way::
+
+	>>> list(zip(*matrix))
+	[(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]
+	
 
 Functions
 ---------

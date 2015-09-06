@@ -13,7 +13,7 @@ These notes are a compilation of the following original resources for the purpos
 - `Python for Econometrics <http://www.kevinsheppard.com/Python_for_Econometrics>`_
 - `High Performance Scientific Computing <https://faculty.washington.edu/rjl/classes/am583s2014/notes/index.html>`_
 - `DataJoy documentation <https://www.getdatajoy.com/learn/>`_
-- `Leran Python The Hard Way <http://learnpythonthehardway.org/book/>`_
+- `Learn Python The Hard Way <http://learnpythonthehardway.org/book/>`_
 
 Why Python?
 -----------

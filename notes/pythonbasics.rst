@@ -761,9 +761,272 @@ And, finally, the most elegant (in the context of standard library) way::
 Functions
 ---------
 
-.. todo:: Write **Functions** section
+Functions are well defined logically complete blocks of actions combined to serve a specific purpose. Functions are separated from the main script to be reused again and again in other projects.
 
-def, return, default values, keyword variables
+Function definition
+~~~~~~~~~~~~~~~~~~~
+
+The simplest function definition is illustrated in the following example:
+
+.. code-block:: python
+
+	def simplest_function():
+	    print('I\'m your function!')
+	    
+which after calling produces the following output::
+
+	>>> simplest_function()
+	I'm your function!
+
+The keyword ``def`` introduces a function `definition`. It must be followed by the function name and the parenthesized list of formal parameters. The statements that form the body of the function start at the next line, and must be indented.
+
+A slightly more complicated example to compute Fibbonaci series:
+
+.. code-block:: python
+
+	def fib(n):
+	    """Print a Fibonacci series up to n."""
+	    a, b = 0, 1
+	    while a < n:
+	        print(a, end=' ')
+	        a, b = b, a+b
+
+Let's try and call this function to find out all Fibonacci numbers up to 2000::
+
+	>>> fib(2000)
+	0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597
+
+Notice the line below function name in tripled quotes. This is called `docstring`. We will come back to it in :ref:`documenenting-code`.
+
+The result of running function above is just a screen output. If we try to assign the result of this function to a new variable, we will only get ``None``::
+
+	>>> out = fib(0)
+	>>> print(out)
+	None
+
+What if you want to store the result? Then you have to use ``return`` statement and say explicitely what your function should produce in the end.
+
+.. code-block:: python
+
+	def fib(n):
+	    """Print a Fibonacci series up to n and return the result."""
+	    result = []
+	    a, b = 0, 1
+	    while a < n:
+	        result.append(a)
+	        a, b = b, a+b
+	    return result
+
+Now let's try this function instead::
+
+	>>> out = fib(2000)
+	>>> print(out)
+	[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597]
+
+Now variable ``out`` is non-empty. It holds the ``list`` of Fibonacci numbers.
+
+Above examples have shown how to define functions without any arguments and with just one argument. In fact, function definition is much more flexible than that. Read on.
+
+Positional arguments
+~~~~~~~~~~~~~~~~~~~~
+
+Passing several arguments to a function is done with their order in mind.
+
+.. code-block:: python
+
+	def power(x, a):
+		"""Take a power"""
+	    return x**a
+
+If you make a mistake in the order of arguments, the function has no way to see that::
+
+	>>> print(power(2, 3), power(3, 2))
+	8 9
+
+Default argument values
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Some arguments may have default values. This is used to simplify function calls especially if arguments are numerous. Default arguments always follow positional ones.
+
+.. code-block:: python
+
+	def power(x, a=2):
+	    """Take a power"""
+	    return x**a
+
+Here is how you call it::
+
+	>>> print(power(2), power(3))
+	4 9
+
+The default values are evaluated once at function definition.
+
+.. code-block:: python
+
+	i = 5
+
+	def fun(arg=i):
+	    print(arg)
+
+	i = 6
+
+The call to this function prduces::
+
+	>>> fun()
+	5
+
+The side effect is that the default value is shared between the calls:
+
+.. code-block:: python
+
+	def fun(a, L=[]):
+	    L.append(a)
+	    return L
+
+	print(fun(1))
+	print(fun(2))
+	print(fun(3))
+
+This prints
+
+.. code-block:: python
+
+	[1]
+	[1, 2]
+	[1, 2, 3]
+
+Here is one possible way to overcome this:
+
+.. code-block:: python
+
+	def f(a, L=None):
+	    if L is None:
+	        L = []
+	    L.append(a)
+	    return L
+
+Keyword arguments
+~~~~~~~~~~~~~~~~~
+
+If keeping the order of the arguments becomes a problem, then keyword (or optional) arguments are here to help. These are the same arguments with default values but redefined in function calls.
+
+.. code-block:: python
+
+	def slicer(seq, start=None, stop=None, step=None):
+		return seq[start:stop:step]
+
+This function has three default values. They all follow the variable without default. Here are a few examples of using this function::
+
+	>>> print(rhyme)
+	['one', 'fish,', 'two', 'fish,', 'red', 'fish,', 'blue', 'fish']
+	>>> print(slicer(rhyme))
+	['one', 'fish,', 'two', 'fish,', 'red', 'fish,', 'blue', 'fish']
+	>>> print(slicer(rhyme, step=2))
+	['one', 'two', 'red', 'blue']
+	>>> print(slicer(rhyme, 1, step=2))
+	['fish,', 'fish,', 'fish,', 'fish']
+	>>> print(slicer(rhyme, stop=4, step=2, start=1))
+	['fish,', 'fish,']
+	>>> print(slicer(rhyme, 1, 4, 2))
+	['fish,', 'fish,']
+
+The following are invalid calls::
+
+	>>> slicer()                     # required argument missing
+	>>> slicer(start=2, 'Python')    # non-keyword argument after a keyword argument
+	>>> slicer('Python', 2, start=3) # duplicate value for the same argument
+	>>> slicer(actor='John Cleese')  # unknown keyword argument
+
+Arbitrary argument lists
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you do not know in advance how many arguments you will need to pass to a function, then you can use function definition as follows:
+
+.. code-block:: python
+
+	def fun(var, *args, **kwargs):
+	    print('First mandatory argument:', var)
+	    if len(args) > 0:
+	        print('\nOptional positional arguments:')
+	    for idx, arg in enumerate(args):
+	        print('Argument number "%s" is "%s"' % (idx, arg))
+	    if len(kwargs) > 0:
+	        print('\nOptional keyword arguments:')
+	    for key, value in kwargs.items():
+	        print('Argument called "%s" is "%s"' % (key, value))
+
+Calling this function produces::
+
+	>>> fun(2, 'a', 'Python', method='OLS', limit=1e2)
+	First mandatory argument: 2
+
+	Optional positional arguments:
+	Argument number "0" is "a"
+	Argument number "1" is "Python"
+
+	Optional keyword arguments:
+	Argument called "method" is "OLS"
+	Argument called "limit" is "100.0"
+
+At the same time, calling this function with the only mandatory argument results in a much simple output::
+
+	>>> fun(2)
+	First mandatory argument: 2
+
+Placing a star in front of ``args`` makes interpreter to expect a tuple of arbitrary length which is then unpacked to separate arguments. Placing two stars in front of ``kwargs`` makes Python unpack it as a dictionary into key-value pairs. So, you can pass arguments as tuples and dictionaries which sometimes significantly improves readability of the code. The following lines produce the same output as in the first example of this subsection::
+
+	>>> args = ('a', 'Python')
+	>>> kwargs = {'method': 'OLS', 'limit': 1e2}
+	>>> fun(2, *args, **kwargs)
+
+
+Lambda functions
+~~~~~~~~~~~~~~~~
+
+Small anonymous functions can be created with the ``lambda`` keyword. Lambda functions can be used wherever function objects are required. They are restricted to be one-liners. Here is an example of a function that returns another function:
+
+.. code-block:: python
+
+	def make_power(n):
+	    return lambda x: x ** n
+
+And the way to use it is as follows::
+
+	>>> power = make_power(3)
+	>>> print(power(0), power(2))
+	0 8
+
+Another example shows how to pass a function as an argument without formally defining it::
+
+	>>> pairs = [(1, 'one'), (2, 'two'), (3, 'three'), (4, 'four')]
+	>>> pairs.sort(key=lambda pair: pair[1])
+	>>> pairs
+	[(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]
+
+Passing by value
+~~~~~~~~~~~~~~~~
+
+In Python parameters to functions are references to objects, which are passed by value. When you pass a variable to a function, Python passes the reference to the object to which the variable refers (the value). Not the variable itself.
+
+If the value passed in a function is immutable, the function does not modify the caller's variable. If the value is mutable, the function may modify the caller's variable in-place:
+
+.. code-block:: python
+
+	def try_to_modify(x, y, z):
+	    x = 23 # immutable object
+	    y.append(42)
+	    z = [99] # reference to new object
+	    print(x, y, z)
+
+Here is what happens if we call this function::
+
+	>>> a = 77    # immutable variable
+	>>> b = [99]  # mutable variable
+	>>> c = [28]
+	>>> try_to_modify(a, b, c)
+	23 [99, 42] [99]
+	>>> print(a, b, c)
+	77 [99, 42] [28]
 
 Classes
 -------
@@ -778,6 +1041,9 @@ Modules and Packages
 .. todo:: Write **Modules and Packages** section
 
 import, ``__all__``, ``__main__``
+
+
+.. _documenenting-code:
 
 Documenenting your code
 -----------------------

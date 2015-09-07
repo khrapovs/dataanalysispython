@@ -835,7 +835,7 @@ Passing several arguments to a function is done with their order in mind.
 .. code-block:: python
 
 	def power(x, a):
-		"""Take a power"""
+	    """Take a power"""
 	    return x**a
 
 If you make a mistake in the order of arguments, the function has no way to see that::

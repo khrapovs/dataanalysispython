@@ -1031,9 +1031,12 @@ Here is what happens if we call this function::
 Classes
 -------
 
-.. todo:: Write **Classes** section
+Python supports object-oriented programming (OOP). The goals of OOP are:
+	
+	- to organize the code, and
+	- to re-use code in similar contexts.
 
-def, methods, attributes, inheritance
+
 
 Modules and Packages
 --------------------

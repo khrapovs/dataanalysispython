@@ -1036,7 +1036,7 @@ Python supports object-oriented programming (OOP). The goals of OOP are:
 	- to organize the code, and
 	- to re-use code in similar contexts.
 
-
+Click `here <https://github.com/khrapovs/dataanalysispython/blob/master/lectures/classes.ipynb>`_ for further details.
 
 Modules and Packages
 --------------------

@@ -1041,10 +1041,101 @@ Click `here <https://github.com/khrapovs/dataanalysispython/blob/master/lectures
 Modules and Packages
 --------------------
 
-.. todo:: Write **Modules and Packages** section
+If you quit from the Python interpreter and enter it again, the definitions you have made (functions and variables) are lost. Therefore, if you want to write a somewhat longer program, you are better off using a text editor to prepare the input for the interpreter and running it with that file as input instead. This is known as creating a `script`. As your program gets longer, you may want to split it into several files for easier maintenance. You may also want to use a handy function that you've written in several programs without copying its definition into each program.
 
-import, ``__all__``, ``__main__``
+To support this, Python has a way to put definitions in a file and use them in a script or in an interactive instance of the interpreter. Such a file is called a `module`; definitions from a module can be `imported` into other modules or into the `main` module (the collection of variables that you have access to in a script executed at the top level and in calculator mode).
 
+A module is a file containing Python definitions and statements. The file name is the module name with the suffix ``.py`` appended. Within a module, the module's name (as a string) is available as the value of the global variable ``__name__``. For instance, use your favorite text editor to create a file called fibo.py in the current directory with the following contents:
+
+.. code-block:: python
+
+	# Fibonacci numbers module
+
+	def fib(n):
+	    """write Fibonacci series up to n"""
+	    a, b = 0, 1
+	    while b < n:
+	        print(b, end=' ')
+	        a, b = b, a+b
+	    print()
+
+	def fib2(n):
+	    """return Fibonacci series up to n"""
+	    result = []
+	    a, b = 0, 1
+	    while b < n:
+	        result.append(b)
+	        a, b = b, a+b
+	    return result
+
+Now enter the Python interpreter and import this module with the following command::
+
+	>>> import fibo
+
+This does not enter the names of the functions defined in ``fibo`` directly in the current symbol table; it only enters the module name fibo there. Using the module name you can access the functions::
+
+	>>> fibo.fib(1000)
+	1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987
+	>>> fibo.fib2(100)
+	[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]
+	>>> fibo.__name__
+	'fibo'
+
+f you intend to use a function often you can assign it to a local name::
+
+	>>> fib = fibo.fib
+	>>> fib(500)
+	1 1 2 3 5 8 13 21 34 55 89 144 233 377
+
+A module can contain executable statements as well as function definitions. These statements are intended to initialize the module. They are executed only the first time the module name is encountered in an import statement.
+
+Modules can import other modules. It is customary but not required to place all ``import`` statements at the beginning of a module (or script, for that matter). The imported module names are placed in the importing module’s global symbol table.
+
+There is a variant of the ``import`` statement that imports names from a module directly into the importing module’s symbol table. For example::
+
+	>>> from fibo import fib, fib2
+	>>> fib(500)
+	1 1 2 3 5 8 13 21 34 55 89 144 233 377
+
+There is even a variant to import all names that a module defines:
+
+	>>> from fibo import *
+	>>> fib(500)
+	1 1 2 3 5 8 13 21 34 55 89 144 233 377
+
+Note that in general the practice of importing ``*`` from a module or package is frowned upon, since it often causes poorly readable code. However, it is okay to use it to save typing in interactive sessions.
+
+Probably the safest way of importing objects from modules is through a short reference to the module name::
+
+	>>> import fibo as fb
+	>>> fb.fib(500)
+	1 1 2 3 5 8 13 21 34 55 89 144 233 377
+
+This way you may safely define another ``fibo`` function and it will not create any conflict with unambiguously different function ``fb.fib``.
+
+When you run a Python module with::
+
+	python fibo.py <arguments>
+
+the code in the module will be executed, just as if you imported it, but with the ``__name__`` set to "__main__". That means that by adding this code at the end of your module:
+
+.. code-block:: python
+
+	if __name__ == "__main__":
+	    import sys
+	    fib(int(sys.argv[1]))
+
+you can make the file usable as a script as well as an importable module, because the code that parses the command line only runs if the module is executed as the "main" file::
+
+	$ python fibo.py 50
+	1 1 2 3 5 8 13 21 34
+
+If the module is imported, the code is not run::
+
+	>>> import fibo
+	>>>
+
+For more details click `here <https://docs.python.org/3/tutorial/modules.html>`_.
 
 .. _documenenting-code:
 

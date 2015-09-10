@@ -479,7 +479,7 @@ if/elif/else
 
 Writing conditional statements in Python is very easy. Start from ``if``, continue with ``elif``, and finish with ``else``. For example,
 
-.. ipython::
+.. code-block:: python
 
 	In [1]: if 2**2 == 4:
    	   ...:     print('Should be True')
@@ -488,7 +488,7 @@ Writing conditional statements in Python is very easy. Start from ``if``, contin
 
 Be careful to **respect the indentation depth**. The Ipython shell automatically increases the indentation depth after a column ``:`` sign; to decrease the indentation depth, go four spaces to the left with the Backspace key. Press the Enter key twice to leave the logical block.
 
-.. ipython::
+.. code-block:: python
 
     In [1]: a = 10
 
@@ -527,7 +527,7 @@ Loops
 
 If you do need to iterate over a sequence of numbers, the built-in function ``range()`` comes in handy. It generates arithmetic progressions:
 
-.. ipython::
+.. code-block:: python
 
 	In [7]: for i in range(4):
 	   ...:     print(i)
@@ -539,7 +539,7 @@ If you do need to iterate over a sequence of numbers, the built-in function ``ra
 
 The ``for`` statement in Python differs a bit from what you may be used to in other programming languages. Rather than always iterating over an arithmetic progression of numbers (like in Pascal), or giving the user the ability to define both the iteration step and halting condition (as in C), Python's ``for`` statement iterates over the items of any sequence (a list or a string), in the order that they appear in the sequence.
 
-.. ipython::
+.. code-block:: python
 
 	In [6]: words = ['cat', 'window', 'bird']
 	   ...: for w in words:
@@ -551,7 +551,7 @@ The ``for`` statement in Python differs a bit from what you may be used to in ot
 
 Here is another example.
 
-.. ipython::
+.. code-block:: python
 
 	In [1]: for letter in 'Python':
 	   ...:     print(letter)
@@ -574,7 +574,7 @@ Coming back to ``range()`` function. It can have at most three arguments, ``rang
 
 If you need to break out of the loop or skip an iteration, then you need to know two statements, ``break`` and ``continue``, respectively.
 
-.. ipython::
+.. code-block:: python
 
 	In [3]: a = [1, 0, 2, 4]
 	   ...: for element in a:
@@ -588,7 +588,7 @@ If you need to break out of the loop or skip an iteration, then you need to know
 
 or
 
-.. ipython::
+.. code-block:: python
 
 	In [4]: a = [1, 0, 2, 4]
 	   ...: for element in a:
@@ -600,7 +600,7 @@ or
 
 Common use case is to iterate over items while keeping track of current index. Quick and dirty way to do this is:
 
-.. ipython::
+.. code-block:: python
 
 	In [5]: words = ('cool', 'powerful', 'readable')
 	   ...: for i in range(0, len(words)):
@@ -612,7 +612,7 @@ Common use case is to iterate over items while keeping track of current index. Q
 
 Yet, Python provides a much more elegant approach:
 
-.. ipython::
+.. code-block:: python
 
 	In [7]: for index, item in enumerate(words):
 	   ...:     print(index, item)
@@ -623,7 +623,7 @@ Yet, Python provides a much more elegant approach:
 
 Try iterating over dictionaries yourslef. You should find out that Python iterates over keys only. In order to have access to the whole pair, one should use ``items()`` method:
 
-.. ipython::
+.. code-block:: python
 
 	In [1]: grades = {'Ivan': 4, 'Olga': 5, 'Petr': 4.5}
 	   ...: for key, val in grades.items():
@@ -635,7 +635,7 @@ Try iterating over dictionaries yourslef. You should find out that Python iterat
 
 Here is how you might compute Pi:
 
-.. ipython::
+.. code-block:: python
 
 	In [1]: pi = 2
 	   ...: for i in range(1, 1000):
@@ -646,7 +646,7 @@ Here is how you might compute Pi:
 
 Or if you want to stop after certain precision was achieved (a common use case), you might want to use ``while`` loop:
 
-.. ipython::
+.. code-block:: python
 
 	In [3]: pi, error, i = 2, 1e10, 1
 	   ...: while error > 1e-3:
@@ -664,7 +664,7 @@ List comprehensions provide a concise way to create lists. Common applications a
 
 For example, assume we want to create a list of squares, like:
 
-.. ipython::
+.. code-block:: python
 
 	In [1]: squares = []
 	   ...: for x in range(10):
@@ -684,7 +684,7 @@ List comprehensions can include more ``for`` statements and even ``if`` statemen
 
 which creates a list of pairs with distinct elements. Equivalenly, one could write this over several lines:
 
-.. ipython::
+.. code-block:: python
 
 	In [1]: combs = []
 	   ...: for x in [1,2,3]:
@@ -719,7 +719,7 @@ Below are a few more examples::
 
 Finally, we can transpose a "matrix" represented as a list of lists in the following several ways.
 
-.. ipython::
+.. code-block:: python
 
 	In [1]: matrix = [
 	   ...:     [1, 2, 3, 4],
@@ -729,7 +729,7 @@ Finally, we can transpose a "matrix" represented as a list of lists in the follo
 
 First, the longest but clearest:
 
-.. ipython::
+.. code-block:: python
 
 	In [1]: transposed = []
 	   ...: for i in range(4):
@@ -743,7 +743,7 @@ First, the longest but clearest:
 
 Next uses one list comprehension:
 
-.. ipython::
+.. code-block:: python
 
 	In [1]: transposed = []
 	   ...: for i in range(4):
@@ -1098,7 +1098,7 @@ There is a variant of the ``import`` statement that imports names from a module 
 	>>> fib(500)
 	1 1 2 3 5 8 13 21 34 55 89 144 233 377
 
-There is even a variant to import all names that a module defines:
+There is even a variant to import all names that a module defines::
 
 	>>> from fibo import *
 	>>> fib(500)

@@ -648,10 +648,11 @@ Or if you want to stop after certain precision was achieved (a common use case),
 
 .. ipython::
 
-	In [1]: pi, error = 2, 1e10
+	In [3]: pi, error, i = 2, 1e10, 1
 	   ...: while error > 1e-3:
 	   ...:     pi *= 4*i**2 / (4*i**2 - 1)
 	   ...:     error = abs(pi - 3.141592653589793)
+	   ...:     i += 1
 	   ...: print(pi)
 	   ...: 
 	3.1405927760475945

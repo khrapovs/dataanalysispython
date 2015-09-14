@@ -1,5 +1,7 @@
-# Fibonacci numbers module
+"""
+Fibonacci numbers module
 
+"""
 
 def fib(n):
     """write Fibonacci series up to n"""
@@ -18,3 +20,11 @@ def fib2(n):
         result.append(b)
         a, b = b, a+b
     return result
+
+
+if __name__ == '__main__':
+
+    # These instructions are perfromed only if the module is run as a script,
+    # like
+    # > python fibo.py
+    print(fib2(10))

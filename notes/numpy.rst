@@ -85,6 +85,57 @@ There are a lot of functions to create some standard arrays, such as filled with
 	>>> np.random.randn(4) # N(0, 1)
 	array([-0.2981319 , -0.06627354,  0.31080455,  0.28470444])
 
+One-dimensional versions of multi-dimensional arrays can be generated with flatten::
+
+	>>> a = np.array([[1, 2, 3], [4, 5, 6]], float)
+	>>> a
+	array([[ 1., 2., 3.],
+	       [ 4., 5., 6.]])
+	>>> a.flatten()
+	array([ 1., 2., 3., 4., 5., 6.])
+
+Two or more arrays can be concatenated together using the concatenate function with a tuple of the arrays to be joined::
+
+		>>> a = np.array([1, 2], float)
+		>>> b = np.array([3, 4, 5, 6], float)
+		>>> c = np.array([7, 8, 9], float)
+		>>> np.concatenate((a, b, c))
+		array([1., 2., 3., 4., 5., 6., 7., 8., 9.])
+
+If an array has more than one dimension, it is possible to specify the axis along which multiple arrays are concatenated. By default (without specifying the axis), NumPy concatenates along the first dimension::
+
+	>>> a = np.array([[1, 2], [3, 4]], float)
+	>>> b = np.array([[5, 6], [7, 8]], float)
+	>>> np.concatenate((a,b))
+	array([[ 1., 2.],
+	       [ 3., 4.],
+	       [ 5., 6.],
+	       [ 7., 8.]])
+	>>> np.concatenate((a, b), axis=0)
+	array([[ 1., 2.],
+	       [ 3., 4.],
+	       [ 5., 6.],
+	       [ 7., 8.]])
+	>>> np.concatenate((a, b), axis=1)
+	array([[ 1., 2., 5., 6.],
+	       [ 3., 4., 7., 8.]])
+
+Finally, the dimensionality of an array can be increased using the newaxis constant in bracket notation::
+
+	>>> a = np.array([1, 2, 3], float)
+	>>> a
+	array([1., 2., 3.])
+	>>> a[:,np.newaxis]
+	array([[ 1.],
+	       [ 2.],
+	       [ 3.]])
+	>>> a[:,np.newaxis].shape
+	(3, 1)
+	>>> b[np.newaxis, :]
+	array([[ 1., 2., 3.]])
+	>>> b[np.newaxis, :].shape
+	(1, 3)
+
 Indexing, Slicing
 -----------------
 
@@ -252,10 +303,195 @@ The copy method makes a complete copy of the array and its data.::
 Array manipulations
 -------------------
 
-.. todo:: Complete **Array manipulations** section
+Basic operations
+~~~~~~~~~~~~~~~~
+
+With scalars::
+
+	>>> a = np.array([1, 2, 3, 4])
+	>>> a + 1
+	array([2, 3, 4, 5])
+	>>> 2**a
+	array([ 2,  4,  8, 16])
+
+All arithmetic operates elementwise::
+
+	>>> b = np.ones(4) + 1
+	>>> a - b
+	array([-1.,  0.,  1.,  2.])
+	>>> a * b
+	array([ 2.,  4.,  6.,  8.])
+	>>> c = np.arange(5)
+	>>> 2**(c + 1) - c
+	array([ 2,  3,  6, 13, 28])
+
+Array multiplication is not matrix multiplication::
+
+	>>> c = np.ones((3, 3))
+	>>> c * c
+	array([[ 1.,  1.,  1.],
+	       [ 1.,  1.,  1.],
+	       [ 1.,  1.,  1.]])
+	>>> c.dot(c)
+	array([[ 3.,  3.,  3.],
+	       [ 3.,  3.,  3.],
+	       [ 3.,  3.,  3.]])
+
+Other operations
+~~~~~~~~~~~~~~~~
+
+Comparisons::
+
+	>>> a = np.array([1, 2, 3, 4])
+	>>> b = np.array([4, 2, 2, 4])
+	>>> a == b
+	array([False,  True, False,  True], dtype=bool)
+	>>> a > b
+	array([False, False,  True, False], dtype=bool)
+
+Array-wise comparisons::
+
+	>>> a = np.array([1, 2, 3, 4])
+	>>> b = np.array([4, 2, 2, 4])
+	>>> c = np.array([1, 2, 3, 4])
+	>>> np.array_equal(a, b)
+	False
+	>>> np.array_equal(a, c)
+	True
+	>>> np.allclose(a, a + a*1e-5)
+	True
+	>>> np.allclose(a, a + a*1e-4)
+	False
+
+Logical operations::
+
+	>>> a = np.array([1, 1, 0, 0], dtype=bool)
+	>>> b = np.array([1, 0, 1, 0], dtype=bool)
+	>>> np.logical_or(a, b)
+	array([ True,  True,  True, False], dtype=bool)
+	>>> np.logical_and(a, b)
+	array([ True, False, False, False], dtype=bool)
+
+The ``where`` function forms a new array from two arrays of equivalent size using a Boolean filter to choose between elements of the two. Its basic syntax is ``where(boolarray, truearray, falsearray)``::
+
+	>>> a = np.array([1, 3, 0], float)
+	>>> np.where(a != 0, 1 / a, a)
+	array([ 1. , 0.33333333, 0. ])
+
+Broadcasting can also be used with the where function::
+
+	>>> np.where(a > 0, 3, 2)
+	array([3, 3, 2])
 
 
-Statistics
+Broadcasting
+~~~~~~~~~~~~
+
+Arrays that do not match in the number of dimensions will be broadcasted by Python to perform mathematical operations. This often means that the smaller array will be repeated as necessary to perform the operation indicated. Consider the following::
+
+	>>> a = np.array([[1, 2], [3, 4], [5, 6]], float)
+	>>> b = np.array([-1, 3], float)
+	>>> a
+	array([[ 1., 2.],
+	       [ 3., 4.],
+	       [ 5., 6.]])
+	>>> b
+	array([-1., 3.])
+	>>> a + b
+	array([[ 0., 5.],
+	       [ 2., 7.],
+	       [ 4., 9.]])
+
+Here, the one-dimensional array ``b`` was broadcasted to a two-dimensional array that matched the size of ``a``. In essence, ``b`` was repeated for each item in ``a``, as if it were given by::
+
+	array([[-1., 3.],
+	       [-1., 3.],
+	       [-1., 3.]])
+
+Python automatically broadcasts arrays in this manner. Sometimes, however, how we should broadcast is ambiguous. In these cases, we can use the newaxis constant to specify how we want to broadcast::
+
+	>>> a = np.zeros((2,2), float)
+	>>> b = np.array([-1., 3.], float)
+	>>> a
+	array([[ 0., 0.],
+	       [ 0., 0.]])
+	>>> b
+	array([-1., 3.])
+	>>> a + b
+	array([[-1., 3.],
+	       [-1., 3.]])
+	>>> a + b[np.newaxis, :]
+	array([[-1., 3.],
+	       [-1., 3.]])
+	>>> a + b[:, np.newaxis]
+	array([[-1., -1.],
+	       [ 3., 3.]])
+
+
+Reductions
 ----------
 
-.. todo:: Complete **Statistics** section
+We can easily compute sums and products::
+
+	>>> a = np.array([2, 4, 3])
+	>>> a.sum(), a.prod()
+	(9, 24)
+	>>> np.sum(a), np.prod(a)
+	(9, 24)
+
+Some basic statistics::
+
+	>>> a = np.random.randn(100)
+	>>> a.mean()
+	-0.083139603089394359
+	>>> np.median(a)
+	-0.14321054235009417
+	>>> a.std()
+	1.0565446101521685
+	>>> a.var()
+	1.1162865132415978
+	>>> a.min(), a.max()
+	(-2.9157377517927121, 2.1581493420569187)
+	>>> np.percentile(a, [5, 50, 95])
+	array([-1.48965296, -0.08633928,  1.36836205])
+
+For multidimensional arrays, each of the functions thus far described can take an optional argument ``axis`` that will perform an operation along only the specified axis, placing the results in a return array::
+
+	>>> a = np.array([[0, 2], [3, -1], [3, 5]], float)
+	>>> a.mean(axis=0)
+	array([ 2., 2.])
+	>>> a.mean(axis=1)
+	array([ 1., 1., 4.])
+	>>> a.min(axis=1)
+	array([ 0., -1., 3.])
+	>>> a.max(axis=0)
+	array([ 3., 5.])
+
+It is possible to find the index of the smallest and largest element::
+
+	>>> a = np.array([2, 1, 9], float)
+	>>> a.argmin()
+	1
+	>>> a.argmax()
+	2
+
+Like lists, arrays can be sorted::
+
+	>>> a = np.array([6, 2, 5, -1, 0], float)
+	>>> sorted(a)
+	[-1.0, 0.0, 2.0, 5.0, 6.0]
+	>>> a.sort()
+	>>> a
+	array([-1., 0., 2., 5., 6.])
+
+Values in an array can be "clipped" to be within a prespecified range. This is the same as applying ``min(max(x, minval), maxval)`` to each element ``x`` in an array.::
+
+	>>> a = np.array([6, 2, 5, -1, 0], float)
+	>>> a.clip(0, 5)
+	array([ 5., 2., 5., 0., 0.])
+
+Unique elements can be extracted from an array::
+
+	>>> a = np.array([1, 1, 4, 5, 5, 5, 7], float)
+	>>> np.unique(a)
+	array([ 1., 4., 5., 7.])

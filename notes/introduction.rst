@@ -14,6 +14,7 @@ These notes are a compilation of the following original resources for the purpos
 - `High Performance Scientific Computing <https://faculty.washington.edu/rjl/classes/am583s2014/notes/index.html>`_
 - `DataJoy documentation <https://www.getdatajoy.com/learn/>`_
 - `Learn Python The Hard Way <http://learnpythonthehardway.org/book/>`_
+- `An introduction to Numpy and Scipy <http://www.engr.ucsb.edu/~shell/che210d/numpy.pdf>`_
 
 Why Python?
 -----------

@@ -129,7 +129,7 @@ Finally, the dimensionality of an array can be increased using the newaxis const
 	array([[ 1.],
 	       [ 2.],
 	       [ 3.]])
-	>>> a[:,np.newaxis].shape
+	>>> a[:, np.newaxis].shape
 	(3, 1)
 	>>> b[np.newaxis, :]
 	array([[ 1., 2., 3.]])
@@ -243,7 +243,7 @@ Simple assignments make no copy of array objects or of their data.::
 	>>> a.shape
 	(3, 4)
 
-Python passes mutable objects as references, so function calls make no copy.::
+Python passes mutable objects as references, so function calls make no copy. ::
 
 	>>> def f(x):
 	...     # id is a unique identifier of an object
@@ -257,7 +257,7 @@ Python passes mutable objects as references, so function calls make no copy.::
 View or Shallow Copy
 ~~~~~~~~~~~~~~~~~~~~
 
-Different array objects can share the same data. The view method creates a new array object that looks at the same data.::
+Different array objects can share the same data. The view method creates a new array object that looks at the same data. ::
 
 	>>> c = a.view()
 	>>> c is a
@@ -484,7 +484,7 @@ Like lists, arrays can be sorted::
 	>>> a
 	array([-1., 0., 2., 5., 6.])
 
-Values in an array can be "clipped" to be within a prespecified range. This is the same as applying ``min(max(x, minval), maxval)`` to each element ``x`` in an array.::
+Values in an array can be "clipped" to be within a prespecified range. This is the same as applying ``min(max(x, minval), maxval)`` to each element ``x`` in an array. ::
 
 	>>> a = np.array([6, 2, 5, -1, 0], float)
 	>>> a.clip(0, 5)

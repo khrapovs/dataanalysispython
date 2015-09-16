@@ -1143,10 +1143,7 @@ For more details click `here <https://docs.python.org/3/tutorial/modules.html>`_
 Documenenting your code
 -----------------------
 
-.. todo:: Write **Documenenting your code** section
-
-docstrings, numpydoc
-
+`A Guide to NumPy/SciPy Documentation <https://github.com/numpy/numpy/blob/master/doc/HOWTO_DOCUMENT.rst.txt>`_
 
 .. _`Wakari.io`: https://www.wakari.io
 .. _`Style Guide`: https://www.python.org/dev/peps/pep-0008/

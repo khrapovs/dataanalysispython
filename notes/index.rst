@@ -13,7 +13,7 @@ Data Analysis in Python
    introduction
    pythonbasics
    numpy
-   dataio
    pandas
+   dataio
    visualization
    todo

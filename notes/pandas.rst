@@ -230,6 +230,133 @@ Series can also have a name attribute which will become very useful when summari
 DataFrame
 ~~~~~~~~~
 
+DataFrame is a 2-dimensional labeled data structure with columns of potentially different types. Like Series, DataFrame accepts many different kinds of input:
+
+	- Dict of 1D ndarrays, lists, dicts, or Series
+	- 2-D numpy.ndarray
+	- A Series
+	- Another DataFrame
+
+Along with the data, you can optionally pass **index** (row labels) and **columns** (column labels) arguments. If you pass an index and / or columns, you are guaranteeing the index and / or columns of the resulting DataFrame. Thus, a dict of Series plus a specific index will discard all data not matching up to the passed index.
+
+If axis labels are not passed, they will be constructed from the input data based on common sense rules.
+
+From dict of Series or dicts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The result index will be the union of the indexes of the various Series. If there are any nested dicts, these will be first converted to Series. If no columns are passed, the columns will be the sorted list of dict keys.
+
+.. ipython::
+
+	In [38]: d = {'one' : pd.Series([1., 2., 3.], index=['a', 'b', 'c']),
+	    ...:      'two' : pd.Series([1., 2., 3., 4.], index=['a', 'b', 'c', 'd'])
+
+	In [40]: df = pd.DataFrame(d)
+
+	In [41]: df
+	Out[41]: 
+	   one  two
+	a    1    1
+	b    2    2
+	c    3    3
+	d  NaN    4
+
+	In [42]: pd.DataFrame(d, index=['d', 'b', 'a'])
+	Out[42]: 
+	   one  two
+	d  NaN    4
+	b    2    2
+	a    1    1
+
+	In [43]: pd.DataFrame(d, index=['d', 'b', 'a'], columns=['two', 'three'])
+	Out[43]: 
+	   two three
+	d    4   NaN
+	b    2   NaN
+	a    1   NaN
+
+The row and column labels can be accessed respectively by accessing the index and columns attributes:
+
+.. ipython::
+
+	In [44]: df.index
+	Out[44]: Index(['a', 'b', 'c', 'd'], dtype='object')
+
+	In [45]: df.columns
+	Out[45]: Index(['one', 'two'], dtype='object'
+
+From dict of array-likes
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ndarrays must all be the same length. If an index is passed, it must clearly also be the same length as the arrays. If no index is passed, the result will be ``range(n)``, where ``n`` is the array length.
+
+.. ipython::
+
+	In [46]: d = {'one' : [1., 2., 3., 4.], 'two' : [4., 3., 2., 1.]}
+
+	In [47]: pd.DataFrame(d)
+	Out[47]: 
+	   one  two
+	0    1    4
+	1    2    3
+	2    3    2
+	3    4    1
+
+	In [48]: pd.DataFrame(d, index=['a', 'b', 'c', 'd'])
+	Out[48]: 
+	   one  two
+	a    1    4
+	b    2    3
+	c    3    2
+	d    4    1
+
+From a list of dicts
+^^^^^^^^^^^^^^^^^^^^
+
+.. ipython::
+
+	In [49]: data2 = [{'a': 1, 'b': 2}, {'a': 5, 'b': 10, 'c': 20}]
+
+	In [50]: pd.DataFrame(data2)
+	Out[50]: 
+	   a   b   c
+	0  1   2 NaN
+	1  5  10  20
+
+	In [51]: pd.DataFrame(data2, index=['first', 'second'])
+	Out[51]: 
+	        a   b   c
+	first   1   2 NaN
+	second  5  10  20
+
+	In [52]: pd.DataFrame(data2, columns=['a', 'b'])
+	Out[52]: 
+	   a   b
+	0  1   2
+	1  5  10
+
+From a dict of tuples
+^^^^^^^^^^^^^^^^^^^^^
+
+.. ipython::
+
+	In [53]: pd.DataFrame({('a', 'b'): {('A', 'B'): 1, ('A', 'C'): 2},
+	    ...:               ('a', 'a'): {('A', 'C'): 3, ('A', 'B'): 4},
+	    ...:               ('a', 'c'): {('A', 'B'): 5, ('A', 'C'): 6},
+	    ...:               ('b', 'a'): {('A', 'C'): 7, ('A', 'B'): 8},
+	    ...:               ('b', 'b'): {('A', 'D'): 9, ('A', 'B'): 10}})
+	Out[53]: 
+	      a           b    
+	      a   b   c   a   b
+	A B   4   1   5   8  10
+	  C   3   2   6   7 NaN
+	  D NaN NaN NaN NaN   9
+
+From a Series
+^^^^^^^^^^^^^
+
+The result will be a DataFrame with the same index as the input Series, and with one column whose name is the original name of the Series (only if no other column name provided).
+
 
 Basic functions
 ---------------

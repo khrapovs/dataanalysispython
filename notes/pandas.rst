@@ -6,8 +6,8 @@ Pandas is an essential data analysis library within Python ecosystem. For more d
 
 .. contents::
 
-Data sructures
---------------
+Data structures
+---------------
 
 Pandas is operates with three basic datastructures: `Series`, `DataFrame`, and `Panel`. There are extensions to this list, but at the tie of writing (v0.16.2) they are all experimental.
 

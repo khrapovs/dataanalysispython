@@ -363,9 +363,9 @@ The result will be a DataFrame with the same index as the input Series, and with
 Basic functionality
 -------------------
 
-.. ipython::
-
 Here are the data sets that will be used below.
+
+.. ipython::
 
 	In [58]: index = pd.date_range('1/1/2000', periods=8)
 

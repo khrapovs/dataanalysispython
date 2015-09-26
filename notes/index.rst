@@ -15,5 +15,6 @@ Data Analysis in Python
    numpy
    pandas
    dataio
+   data_crunching
    visualization
    todo

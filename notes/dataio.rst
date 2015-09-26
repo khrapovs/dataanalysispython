@@ -2,6 +2,8 @@
 Data I/O
 ========
 
+Source: http://pandas.pydata.org/pandas-docs/stable/io.html
+
 .. todo:: Write **Data I/O** section
 
 Data import

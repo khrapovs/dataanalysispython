@@ -8,6 +8,8 @@ Data visualization
 Matplotlib
 ----------
 
+- `A few examples <https://github.com/khrapovs/dataanalysispython/blob/master/lectures/matplotlib.ipynb>`_
+
 Seaborn
 -------
 

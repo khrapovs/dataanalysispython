@@ -7,3 +7,5 @@ Data crunching examples
 - `Electricity generation in the US <https://github.com/khrapovs/dataanalysispython/blob/master/lectures/electricity.ipynb>`_
 
 - `Online news popularity <https://github.com/khrapovs/dataanalysispython/blob/master/lectures/news_popularity.ipynb>`_
+
+- `Stock prices and returns <https://github.com/khrapovs/dataanalysispython/blob/master/lectures/stocks.ipynb>`_

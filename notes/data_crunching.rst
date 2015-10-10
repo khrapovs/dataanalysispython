@@ -9,3 +9,5 @@ Data crunching examples
 - `Online news popularity <https://github.com/khrapovs/dataanalysispython/blob/master/lectures/news_popularity.ipynb>`_
 
 - `Stock prices and returns <https://github.com/khrapovs/dataanalysispython/blob/master/lectures/stocks.ipynb>`_
+
+- `Movie ratings <https://github.com/khrapovs/dataanalysispython/blob/master/lectures/movie_ratings.ipynb>`_

@@ -21,6 +21,7 @@ Why Python?
 
 - `10 Reasons Python Rocks for Research (And a Few Reasons it Doesn’t) <https://www.stat.washington.edu/~hoytak/blog/whypython.html>`_
 - `Choosing R or Python for data analysis? An infographic <http://blog.datacamp.com/r-or-python-for-data-analysis/>`_
+- `Data Science Programming: Python vs R <http://www.kdnuggets.com/2015/10/data-science-programming-python-vs-r.html>`_
 - `Python vs Matlab <http://www.pyzo.org/python_vs_matlab.html>`_
 - `Infographic: Quick Guide on SAS vs R vs Python <http://www.analyticsvidhya.com/blog/2015/05/infographic-quick-guide-sas-python/>`_
 
@@ -29,8 +30,7 @@ How to start using Python
 
 Online code editors which allow to bypass any difficulties connected with installation of Python on your own machine:
 
-- `DataJoy <https://www.getdatajoy.com>`_
-- `Wakari.io <https://www.wakari.io>`_
+- `Wakari.io <https://www.wakari.io>`_ (seems to be at full capacity very frequently)
 
 For local installation it is recommended to download `Anaconda distribution <https://store.continuum.io/cshop/anaconda>`_. Anaconda includes my favorite IDE, `Spyder <https://pythonhosted.org/spyder/>`_.
 

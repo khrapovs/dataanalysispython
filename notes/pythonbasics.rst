@@ -1037,7 +1037,7 @@ Python supports object-oriented programming (OOP). The goals of OOP are:
 	- to organize the code, and
 	- to re-use code in similar contexts.
 
-Click `here <https://github.com/khrapovs/dataanalysispython/blob/master/lectures/classes.ipynb>`_ for further details.
+Click `here <https://github.com/khrapovs/dataanalysispython/blob/master/lectures/classes.ipynb>`__ for further details.
 
 Modules and Packages
 --------------------
@@ -1136,7 +1136,7 @@ If the module is imported, the code is not run::
 	>>> import fibo
 	>>>
 
-For more details click `here <https://docs.python.org/3/tutorial/modules.html>`_.
+For more details click `here <https://docs.python.org/3/tutorial/modules.html>`__.
 
 .. _documenenting-code:
 

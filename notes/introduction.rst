@@ -42,6 +42,7 @@ Essential libraries
 - `SciPy <https://www.scipy.org/scipylib/index.html>`_ - numerical routines
 - `StatsModels <http://www.statsmodels.org/stable/index.html>`_ - econometrics tools
 - `Matplotlib <http://matplotlib.org/>`_ - plotting library
+- `Seaborn <http://seaborn.pydata.org/>`_ - pretty plotting and basic visual analysis
 - `Bokeh <http://bokeh.pydata.org/>`_ - Interactive plotting
 - `Plotly <https://plot.ly/>`_ - Interactive plotting
 

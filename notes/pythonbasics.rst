@@ -139,8 +139,6 @@ Booleans
 
 ``bool`` type is essential for any programming logic. Normally, truth and falcity are defined as ``True`` and ``False``::
 
-	>>> print(x)
-	True
 	>>> x = True
 	>>> print(x)
 	True
@@ -511,7 +509,7 @@ Besides chceking for equality as in the previous examples, you can check for oth
 	>>> a is b
 	False
 
-You can test whether an object belongs to a collection using ``in`` operator. Note that if a collection is of type ``dict``, then the search is done over dictionaries.::
+You can test whether an object belongs to a collection using ``in`` operator. Note that if a collection is of type ``dict``, then the search is done over dictionaries::
 
 	>>> a = [1, 2, 4]
 	>>> 2 in a, 4 in a
@@ -1082,7 +1080,7 @@ This does not enter the names of the functions defined in ``fibo`` directly in t
 	>>> fibo.__name__
 	'fibo'
 
-f you intend to use a function often you can assign it to a local name::
+If you intend to use a function often you can assign it to a local name::
 
 	>>> fib = fibo.fib
 	>>> fib(500)

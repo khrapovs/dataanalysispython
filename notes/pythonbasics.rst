@@ -501,7 +501,7 @@ Be careful to **respect the indentation depth**. The Ipython shell automatically
        ...:
     A lot
 
-Besides chceking for equality as in the previous examples, you can check for other statements evaluating to ``bool``. These are comparison operators: ``<, >, <=, =>``. Testing for equality of two objects is done with ``is`` operator::
+Besides checking for equality as in the previous examples, you can check for other statements evaluating to ``bool``. These are comparison operators: ``<, >, <=, =>``. Testing for equality of two objects is done with ``is`` operator::
 
 	>>> a, b = 1, 1.
 	>>> a == b

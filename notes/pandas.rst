@@ -9,7 +9,7 @@ Pandas is an essential data analysis library within Python ecosystem. For more d
 Data structures
 ---------------
 
-Pandas is operates with three basic datastructures: `Series`, `DataFrame`, and `Panel`. There are extensions to this list, but at the tie of writing (v0.16.2) they are all experimental.
+Pandas operates with three basic datastructures: `Series`, `DataFrame`, and `Panel`. There are extensions to this list, but for the purposes of this material even the first two are more than enough.
 
 We start by importing NumPy and Pandas using their conventional short names:
 
@@ -184,7 +184,7 @@ The result of an operation between unaligned Series will have the union of the i
 Series is similar to dictionary
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-A few examples t illustrate the heading.
+A few examples to illustrate the heading.
 
 .. ipython::
 
@@ -773,7 +773,8 @@ Similarly, you can get the most frequently occurring value(s) (the mode) of the 
 	1    7
 	dtype: int64
 
-	In [117]: df5 = pd.DataFrame({'A': np.random.randint(0, 7, size=50), 'B': np.random.randint(-10, 15, size=50)})
+	In [117]: df5 = pd.DataFrame({'A': np.random.randint(0, 7, size=50),
+	   .....:                     'B': np.random.randint(-10, 15, size=50)})
 
 	In [118]: df5.mode()
 	Out[118]: 
@@ -1512,8 +1513,8 @@ With a DataFrame:
 .. ipython::
 
 	In [105]: df1 = pd.DataFrame(np.random.randn(6,4),
-	   .....: index=list(range(0,12,2)),
-	   .....: columns=list(range(0,8,2)))
+	   .....:                    index=list(range(0,12,2)),
+	   .....:                    columns=list(range(0,8,2)))
 
 	In [106]: df1
 	Out[106]: 
@@ -1625,8 +1626,8 @@ You may select rows from a DataFrame using a boolean vector the same length as t
 .. ipython::
 
 	In [122]: df = pd.DataFrame({'a' : ['one', 'one', 'two', 'three', 'two', 'one', 'six'],
-	   .....: 'b' : ['x', 'y', 'y', 'x', 'y', 'x', 'x'],
-	   .....: 'c' : np.random.randn(7)})
+	   .....:                    'b' : ['x', 'y', 'y', 'x', 'y', 'x', 'x'],
+	   .....:                    'c' : np.random.randn(7)})
 
 	In [123]: df
 	Out[123]: 
@@ -1777,16 +1778,16 @@ DataFrame also has an ``isin`` method. When calling ``isin``, pass a set of valu
 	3  False  False  False
 
 Set / Reset Index
------------------
+~~~~~~~~~~~~~~~~~
 
 DataFrame has a ``set_index`` method which takes a column name (for a regular ``Index``) or a list of column names (for a ``MultiIndex``), to create a new, indexed DataFrame:
 
 .. ipython::
 
 	In [153]: data = pd.DataFrame({'a' : ['bar', 'bar', 'foo', 'foo'],
-	   .....: 'b' : ['one', 'two', 'one', 'two'],
-	   .....: 'c' : ['z', 'y', 'x', 'w'],
-	   .....: 'd' : range(1, 5)})
+	   .....:                      'b' : ['one', 'two', 'one', 'two'],
+	   .....:                      'c' : ['z', 'y', 'x', 'w'],
+	   .....:                      'd' : range(1, 5)})
 
 	In [154]: data
 	Out[154]: 

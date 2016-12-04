@@ -3,5 +3,4 @@
 *.pdf
 *.lyx~
 _build
-data/
 plots/

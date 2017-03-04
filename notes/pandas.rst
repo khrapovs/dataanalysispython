@@ -68,7 +68,7 @@ If ``data`` is an array-like, ``index`` must be the same length as ``data``. If 
 Dictionary
 ^^^^^^^^^^
 
-Dinctionaries already have a natural candidate for the index, so passing the ``index`` separately seems redundant, although possible.
+Dictionaries already have a natural candidate for the index, so passing the ``index`` separately seems redundant, although possible.
 
 .. ipython::
 
